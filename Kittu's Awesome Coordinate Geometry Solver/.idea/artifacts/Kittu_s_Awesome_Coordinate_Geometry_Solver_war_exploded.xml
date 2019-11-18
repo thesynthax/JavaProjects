@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="Kittu's Awesome Coordinate Geometry Solver:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/Kittu_s_Awesome_Coordinate_Geometry_Solver_war_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="Kittu's Awesome Coordinate Geometry Solver/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="Kittu's Awesome Coordinate Geometry Solver" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>
