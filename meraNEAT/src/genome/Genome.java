@@ -25,9 +25,9 @@ public class Genome
         this.inputSize = inputSize;
         this.outputSize = outputSize;
 
-        /**
-         * Creates an empty genome: A genome having nodes but no connections
-         * Creates and adds nodes to the nodes ArrayList, specifying its ID and type
+        /*
+          Creates an empty genome: A genome having nodes but no connections
+          Creates and adds nodes to the nodes ArrayList, specifying its ID and type
          */
         connections.clear();
         nodes.clear();

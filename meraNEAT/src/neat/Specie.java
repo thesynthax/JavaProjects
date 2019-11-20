@@ -3,48 +3,57 @@ package neat;
 import java.util.ArrayList;
 import java.util.Comparator;
 
+/**
+ * A specie is a part of population in which compatible individuals are placed
+ */
 public class Specie
 {
-    private ArrayList<Player> players = new ArrayList<>();
+    //List of individuals in this specie
+    private ArrayList<Individual> individuals = new ArrayList<>();
+    //Fittest fitness in the specie
     private double bestFitness = 0, averageFitness;
 
+    //Number of generations gone without improvement in the best fitness
     private int staleness = 0;
 
-    public Specie(Player p)
+    //Constructor
+    public Specie(Individual p)
     {
-        players.add(p);
+        individuals.add(p);
 
         bestFitness = p.getFitness();
     }
 
-    public void addToSpecie(Player p)
+    //Function to add individual to this specie
+    public void addToSpecie(Individual p)
     {
-        players.add(p);
+        individuals.add(p);
     }
 
-    public void sortPlayersInSpecie()
+    //Sorting Individuals based upon their fitness
+    public void sortIndividualsInSpecie()
     {
-        players.sort(
-                new Comparator<Player>()
+        individuals.sort(
+                new Comparator<Individual>()
                 {
                     @Override
-                    public int compare(Player o1, Player o2)
+                    public int compare(Individual o1, Individual o2)
                     {
                         return Double.compare(o1.getFitness(), o2.getFitness());
                     }
                 }
         );
 
-        if (players.size() == 0)
+        if (individuals.size() == 0)
         {
             staleness = 200;
             return;
         }
 
-        if (players.get(0).getFitness() > bestFitness)
+        if (individuals.get(0).getFitness() > bestFitness)
         {
             staleness = 0;
-            bestFitness = players.get(0).getFitness();
+            bestFitness = individuals.get(0).getFitness();
         }
         else
         {
@@ -52,25 +61,27 @@ public class Specie
         }
     }
 
+    //Average Fitness set
     public void setAverageFitness()
     {
         float sum = 0;
-        for (Player p : players)
+        for (Individual p : individuals)
         {
             sum += p.getFitness();
         }
-        averageFitness = sum/players.size();
+        averageFitness = sum/ individuals.size();
     }
 
-    public Player breed()
+    //Breeding two individuals in this specie
+    public Individual breed()
     {
-        Player child;
+        Individual child;
         if (0.25f > Math.random())
-            child = selectPlayer().clone();
+            child = selectIndividual().clone();
         else
         {
-            Player parent1 = selectPlayer();
-            Player parent2 = selectPlayer();
+            Individual parent1 = selectIndividual();
+            Individual parent2 = selectIndividual();
 
             if (parent1.getFitness() < parent2.getFitness())
             {
@@ -86,36 +97,37 @@ public class Specie
         return child;
     }
 
-    public Player selectPlayer()
+    //Selecting a random individual based upon their fitness i.e. the fitter individual will have higher chance of getting selected
+    public Individual selectIndividual()
     {
         double fitnessSum = 0;
-        for (int i =0; i < players.size(); i++)
+        for (int i = 0; i < individuals.size(); i++)
         {
-            fitnessSum += players.get(i).getFitness();
+            fitnessSum += individuals.get(i).getFitness();
         }
 
         double random = Math.random() * fitnessSum;
         double runningSum = 0;
 
-        for (int i = 0; i < players.size(); i++)
+        for (int i = 0; i < individuals.size(); i++)
         {
-            runningSum += players.get(i).getFitness();
+            runningSum += individuals.get(i).getFitness();
             if (runningSum > random)
             {
-                return players.get(i);
+                return individuals.get(i);
             }
         }
         //unreachable code to make the parser happy
-        return players.get(0);
+        return individuals.get(0);
     }
 
     public void cull()
     {
-        if (players.size() > 2)
+        if (individuals.size() > 2)
         {
-            for (int i = players.size() / 2; i < players.size(); i++)
+            for (int i = individuals.size() / 2; i < individuals.size(); i++)
             {
-                players.remove(i);
+                individuals.remove(i);
                 i--;
             }
         }
