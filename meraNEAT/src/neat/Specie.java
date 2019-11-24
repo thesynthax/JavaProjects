@@ -11,7 +11,9 @@ public class Specie
     //List of individuals in this specie
     private ArrayList<Individual> individuals = new ArrayList<>();
     //Fittest fitness in the specie
-    private double bestFitness = 0, averageFitness;
+    private double bestFitness = 0;
+
+    private double averageFitness;
 
     //Number of generations gone without improvement in the best fitness
     private int staleness = 0;
@@ -72,6 +74,11 @@ public class Specie
         averageFitness = sum/ individuals.size();
     }
 
+    public double getAverageFitness()
+    {
+        return averageFitness;
+    }
+
     //Breeding two individuals in this specie
     public Individual breed()
     {
@@ -121,15 +128,33 @@ public class Specie
         return individuals.get(0);
     }
 
-    public void cull()
+    //Kill bottom half or the whole specie except the best individual
+    public void cull(boolean killAllExceptBest)
     {
         if (individuals.size() > 2)
         {
-            for (int i = individuals.size() / 2; i < individuals.size(); i++)
+            if (!killAllExceptBest)
             {
-                individuals.remove(i);
-                i--;
+                for (int i = individuals.size() / 2; i < individuals.size(); i++)
+                {
+                    individuals.remove(i);
+                    i--;
+                }
+
+            }
+            else
+            {
+                for (int i = 1; i < individuals.size(); i++)
+                {
+                    individuals.remove(i);
+                    i--;
+                }
             }
         }
+    }
+
+    public double getBestFitness()
+    {
+        return bestFitness;
     }
 }
