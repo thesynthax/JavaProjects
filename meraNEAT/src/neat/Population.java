@@ -9,6 +9,23 @@ public class Population
 {
     private ArrayList<Individual> population = new ArrayList<>();
 
-    Individual bestIndividual;
+    private void evolve()
+    {
 
+    }
+
+    private void speciate()
+    {
+
+    }
+
+    private void killSpecies()
+    {
+
+    }
+
+    private void cull(boolean killAllExceptBest)
+    {
+        
+    }
 }

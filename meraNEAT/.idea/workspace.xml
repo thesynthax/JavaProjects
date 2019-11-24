@@ -2,12 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="27c6ce61-da9f-4718-93c4-f11abe3a8d77" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/genome/Genome.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/genome/Genome.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/neat/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/neat/Individual.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/neat/Population.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/neat/Population.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/neat/Specie.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/neat/Specie.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -85,7 +81,7 @@
       <workItem from="1573811308200" duration="267000" />
       <workItem from="1573996484941" duration="731000" />
       <workItem from="1574004620799" duration="6374000" />
-      <workItem from="1574094237934" duration="3736000" />
+      <workItem from="1574094237934" duration="8844000" />
     </task>
     <servers />
   </component>
