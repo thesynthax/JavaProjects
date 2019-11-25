@@ -63,6 +63,11 @@ public class Individual
         //Write code here...
     }
 
+    public void update()
+    {
+        //Write code here...
+    }
+
     //Individual copy
     public Individual clone()
     {

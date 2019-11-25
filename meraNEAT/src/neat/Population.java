@@ -24,6 +24,19 @@ public class Population
         }
     }
 
+    private void updateAliveIndividuals()
+    {
+        for (Individual i : population)
+        {
+            if (!i.isDead())
+            {
+                i.look();
+                i.think();
+                i.update();
+            }
+        }
+    }
+
     //Evolving and incrementing the generation
     private void evolve()
     {
@@ -82,5 +95,15 @@ public class Population
             sum += s.getAverageFitness();
         }
         return sum/species.size();
+    }
+
+    public boolean allDead()
+    {
+        for (Individual i : population)
+        {
+            if (!i.isDead())
+                return false;
+        }
+        return true;
     }
 }
