@@ -40,7 +40,19 @@ public class Population
     //Evolving and incrementing the generation
     private void evolve()
     {
+    	//genSpecies
+    	//Calculate Fitness
+    	for (Player p : population)
+    	{
+    		p.calculateFitness();
+    	}
 
+    	for (Specie s : species)
+    	{
+    		s.sortIndividualsInSpecie();
+    	}
+
+    	sortSpecies();
     }
 
     //Generating the species and sorting the players inside each species
@@ -52,13 +64,29 @@ public class Population
     //Kill the species whose fitness hasn't increased over several generations
     private void killStaleSpecies()
     {
-
+    	for (int i = 2; i< species.size(); i++) 
+    	{
+      		if (species.get(i).staleness >= 15) 
+      		{
+		        species.remove(i);
+		        i--;
+      		}
+    	}
     }
 
     //The weak species will be killed
     private void killBadSpecies()
     {
+    	float avgSum = avgFitness * population.size();
 
+    	for (int i = 0; i < species.size(); i++)
+    	{
+    		if (species.get(i).getAverageFitness/avgSum * population.size() < 1)
+    		{
+    			species.remove(i);
+    			i--;
+    		}
+    	}
     }
 
     //Slaughter the bottom half or the whole specie except the best
