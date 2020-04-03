@@ -9,7 +9,7 @@ public class NEAT
     public static final int MAX_NODES = (int)Math.pow(2, 20);
 
     //These coefficients are used to calculate the compatibility/distance between two genomes
-    private double excessCoeff = 1, disjointCoeff = 1, weightDiffCoeff = 1;
+    private double excessCoeff = 1, disjointCoeff = 1, weightDiffCoeff = 0.4;
     //If distance between genomes is more than this threshold, they are not compatible to be in one specie.
     private double compatibilityThreshold = 3;
 

@@ -157,4 +157,14 @@ public class Specie
     {
         return bestFitness;
     }
+
+    public int getStaleness()
+    {
+        return staleness;
+    }
+
+    public ArrayList<Individual> getIndividuals()
+    {
+        return individuals;
+    }
 }
