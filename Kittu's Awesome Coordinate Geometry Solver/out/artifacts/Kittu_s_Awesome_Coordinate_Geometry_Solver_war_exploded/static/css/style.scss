@@ -1,6 +1,1 @@
-@use "base";
-
-body {
-    background-color: base.$primary-color;
-    color: black;
-}
+@import "base.scss";
