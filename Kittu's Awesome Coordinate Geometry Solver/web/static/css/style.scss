@@ -84,23 +84,33 @@ body {
 .a1 {
     margin-top: 10px;
 }
-
+/*
 .a6 {
     height: 5px;
     opacity: 100%;
+}*/
+
+.a2, .a10 {
+    height: 3px;
+    opacity: 50%;
 }
 
 .vertLine {
     position: relative;
-    //top: -375px;
     margin-left: 30px;
     height: 100%;
     width: 3px;
     background-color: #000000;
     opacity: 20%;
 }
-
+/*
 .b22 {
     width: 5px;
     opacity: 100%;
+}*/
+
+.b2, .b6, .b10, .b14, .b18, .b26, .b30, .b34, .b38, .b42 {
+    width: 4px;
+    opacity: 50%;
 }
+
