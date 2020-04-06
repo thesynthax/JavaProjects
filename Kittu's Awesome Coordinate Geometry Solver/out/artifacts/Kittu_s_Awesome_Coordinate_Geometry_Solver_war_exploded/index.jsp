@@ -11,7 +11,7 @@
 <html>
     <head>
         <title></title>
-        <script src="static/js/header2bgGlow.js"></script>
+
     </head>
     <body>
 
@@ -19,11 +19,12 @@
             <div id="header2bg">
                 <div class="lines">
                     <x:forEach var="i" begin="1" end="11">
-                        <div class="${"horzLine"} ${"a"}${i}"></div>
+                        <div class="line horzLine a${i}">
+                        </div>
                     </x:forEach>
                     <x:forEach var="i" begin="1" end="43">
                         <%--<div class="${"horzLine"} ${"vertLine"} ${"b"}${i}" style="top: calc(calc(-${i}*400px) + 25px); left: calc(${i-1}*35px)"></div>--%>
-                        <div class="${"horzLine"} ${"vertLine"} ${"b"}${i}"></div>
+                        <div class="line horzLine vertLine b${i}"></div>
                     </x:forEach>
                 </div>
             </div>
@@ -72,5 +73,6 @@
             window.addEventListener("resize", correctGeometry);
             correctGeometry();
         </script>
+        <script src="static/js/header2bgGlow.js"></script>
     </body>
 </html>
