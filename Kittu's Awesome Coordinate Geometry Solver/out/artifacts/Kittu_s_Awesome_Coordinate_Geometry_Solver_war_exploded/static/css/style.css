@@ -14,6 +14,7 @@ html {
 }
 
 #header {
+  top: 0;
   z-index: 0;
   background: #0F1020;
   width: 100vw;
@@ -29,10 +30,8 @@ html {
   background-color: #5F758E;
   width: 100vw;
   height: 370px;
-  top: 80px;
-  margin-top: 0;
+  margin-top: 80px;
   margin-left: 0;
-  position: absolute;
   box-shadow: black 0 0 20px;
   border-bottom-right-radius: 35px;
   border-bottom-left-radius: 35px;
@@ -40,7 +39,7 @@ html {
 
 #header2bg {
   z-index: 1;
-  opacity: 35%;
+  opacity: 50%;
   top: 0;
   left: 0;
   margin: 0 0;
@@ -109,5 +108,20 @@ body {
   width: 4px;
   opacity: 50%;
 }
+
+/*
+.a6  {
+    --x-shadow: 0;
+    --y-shadow: 0;
+    --x:50%;
+    --y:50%;
+    transition: all 0.2s ease;
+
+    &:hover {
+        transition: all 0.2s ease;
+        box-shadow: var(--x-shadow) var(--y-shadow) 10px $dark-black;
+    }
+}
+*/
 
 /*# sourceMappingURL=style.css.map */
