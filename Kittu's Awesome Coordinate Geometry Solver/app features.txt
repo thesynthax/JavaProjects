@@ -1,0 +1,19 @@
+APP FEATURES:
+
+1. plotting of curves
+2. identification of type of curve (line, circle, para, ellp, hyp etc)
+3. properties of curve (line - slope, x-y intercepts etc, circle - center, radius etc, hyp - foci, dir, aux circle, asymptote etc)
+4. parametric plotting of curve (para - x=2at, y=at^2, circle - x=rcost, y=rsint etc)
+5. identification of bijective, non-bijective functions (one-one, many-one, onto, into)
+6. equation solving
+7. min distance b/w two curves
+8. common tangents, normals of two curves
+9. rotation of curves by dragging or entering and angle
+
+ambitious targets:
+1. functional eqn solving
+2. complex plane
+3. calculus (limits, diff, int)
+4. finding the curve via calculus operations
+5. application of derivatives
+6. differential eqns
