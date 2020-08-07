@@ -1,0 +1,98 @@
+- pom.xml is used for downloading dependencies to run java web app
+
+- web.xml is called deployment descriptor which has mappings of the servlets to its corresponding pages
+
+- index.jsp is the home page
+
+- get is used when a query is being accepted, and post is used when query is being sent
+
+- the data used in get method shows up in the address bar, while for post it does not
+
+- any servlet class extends HttpServlet
+
+- the serlvet class allows to use methods, 3 of which are service, doPost, doGet
+
+- service is by default a get method
+
+- service, doGet, doPost have two parameters: HttpServletRequest & HttpServletResponse
+
+- To print something on page, 
+  PrintWriter out = response.getWriter();
+  out.println("string");
+
+- request.setAttribute("<Data (variable name) that has to be forwarded>", <the value of the data>)
+  RequestDispatcher requestDispatcher = request.getRequestDispatcher();
+  requestDispatcher.forward(request, response);
+
+  is used forward a request, including the data attached to the request object, from one servlet to another.
+
+- Second servlet sends the same response which was used in the first servlet as the same response got forwarded using requestDispatcher
+
+- RequestDispatcher works good for servlets on the same website. To forward requests between different websites, sendRedirect is used.
+
+- In RequestDispatcher, the client (browser) doesn't know from which servlet has the response come from, but in sendRedirect the client knows
+
+- In RequestDispatcher, the same request and response is forwarded to the second servlet so that if the first servlet has some data (for eg a
+  variable x = 5), it can be attached to the request object of first servlet and can be forwarded to the second, but in sendRedirect, a new
+  request and response is created.
+
+- In RequestDispatcher the data could be transferred from one servlet to another, but for sendRedirect, a concept of session management is used
+
+- sendRedirect is a method of response
+
+- To send data from first servlet to second in the same website using sendRedirect,
+  response.sendRedirect("<location (name of the page corresponding to this servlet)>");
+  This location is the URL which will appear on the address bar.
+
+  To receive data from first servlet,
+  var <varname> = request.getParameter("<name of the variable>")
+
+- URL Rewriting,
+  The location passed in the sendRedirect method can be used to do URL Rewriting.
+  For eg we have to pass a variable x = 5 from servlet s1 to servlet s2, we can do by,
+  response.sendRedirect("s2?x=" + x);
+
+- Session Management,
+  A session remains regardless of which servlet we are on, so if we can attach a data to the session, we can use it anytime using session management.
+
+  on servlet 1,
+  HttpSession session = req.getSession();
+  session.setAttribute("<Data (variable name) that has to be forwarded>", <the value of the data>);
+
+  on servlet 2,
+  HttpSession session = req.getSession();
+  session.getAttribute("Data that was forwarded's name");
+
+  Provided that response.sendRedirect("<location (name of the page corresponding to this servlet)>"); is used to forward the response from servlet 1 to 2
+
+- We can remove a data from session by using session.removeAttribute("<Name>");
+
+- Using JSP we can write both HTML and Java. All the code inside <% %> goes under service method of servlet and all the code inside <%! %> 
+  goes above the service method i.e. declaration, we write variable and function declarations here.
+
+- Types of JSP tags:
+	1. <%@page %> (Directive) - Used for writing the headers of the java file, i.e. importing packages, extends etc
+	   <%@include %> (Directive) - Used for including other JSP in this JSP, for eg header, footer, bg, where the other JSP behaves like a template
+			Eg: <%@page import="java.util.Scanner, java.awt.*" %>
+				<%@include file="header.jsp"%>
+
+	2. <%! %> (Declaration) - Used for variable and function declarations, so code goes above service method.
+
+	3. <% %> (Scriptlet) - The code inside this goes inside service method
+
+	4. <%= %> (Expression) - Used for printing on page
+
+- Implicit (builtin) objects in JSP (can be used in scriptlet and expression):
+	1. request (HttpServletRequest)
+	2. response (HttpServletResponse)
+	3. pageContext (PageContext)
+	4. out (PrintWriter)
+	5. session (HttpSession)
+	6. application (ServletContext)
+	7. config (ServletConfig)
+
+- Never write business logic in JSP, always write it in java classes(servlets etc). Servlets should not do any operations, they're just used 
+  for receiving request and sending response. The operations must be done in some other class, for eg, fetching data from database should not be done through servlets, rather a special class should be made for it. This kind of architeccture is MVC (Model (data), View(Front-end), Controller(Service)):
+  1. Controller acts as an interface between View and Model. Controller intercepts all the incoming requests.
+  2. Model represents the state of the application i.e. data. It can also have business logic.
+  3. View represents the presentaion i.e. UI(User Interface).
